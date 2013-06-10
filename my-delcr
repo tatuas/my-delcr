@@ -1,0 +1,11 @@
+#!/bin/sh
+
+path=`pwd`'/'
+for filename in $@
+do
+    echo ${path}${filename}
+    tr -d '\r' < ${path}${filename} > ${path}'new_'${filename}
+    rm ${path}${filename}
+    mv ${path}'new_'${filename} ${path}${filename}
+    chmod +x ${path}${filename}
+done
